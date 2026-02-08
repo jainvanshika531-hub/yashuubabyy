@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For My Jaanu ❤️</title>
+
+<style>
+body {
+    text-align: center;
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    font-family: Arial;
+    color: white;
+    padding: 30px;
+}
+
+/* Photo gallery */
+photo {
+    width: 200px;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+/* Buttons */
+button {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    background: white;
+    color: #ff4d6d;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+button:hover {
+    background: #ffe0e6;
+}
+
+/* Hearts animation */
+.heart {
+    position: fixed;
+    color: red;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
+}
+/* Teddy animation */
+.teddy {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 60px;
+    animation: teddyMove 3s ease-in-out infinite;
+}
+
+@keyframes teddyMove {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+/* Teddy kiss animation */
+.hug-container {
+    position: fixed;
+    bottom: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 70px;
+}
+
+.left-teddy, .right-teddy {
+    position: absolute;
+}
+
+.left-teddy {
+    left: -150px;
+    animation: moveRight 2s forwards;
+}
+
+.right-teddy {
+    left: 150px;
+    animation: moveLeft 2s forwards;
+}
+
+/* Kiss appears after move */
+.kiss {
+    position: absolute;
+    left: -10px;
+    top: -20px;
+    font-size: 40px;
+    opacity: 0;
+    animation: showKiss 1s forwards;
+    animation-delay: 2s;
+}
+
+@keyframes moveRight {
+    to { left: -30px; }
+}
+
+@keyframes moveLeft {
+    to { left: 30px; }
+}
+
+@keyframes showKiss {
+    to { opacity: 1; }
+}
+/* Love letter popup */
+.letter-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: #ff4d6d;
+    padding: 25px;
+    border-radius: 15px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+.letter-popup button {
+    margin-top: 15px;
+    background: #ff4d6d;
+    color: white;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Happy Valentine's Day ❤️</h1>
+
+<p>
+To my dear boyfriend,<br><br>
+Every moment with you is my favorite memory.  
+Thank you for loving me and being mine.  
+I love you endlessly. ❤️
+</p>
+
+
+<h2>Our Song 🎵</h2>
+
+<!-- Replace Spotify link -->
+<iframe style="border-radius:12px"
+src="https://open.spotify.com/embed/track/0Q9rHyEG7lME4y2Fqtuxgl?utm_source=generator" 
+width="300" height="80"
+frameborder="0"
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
+
+<h2>Will you be my Valentine? 💌</h2>
+
+<button id="yesBtn" onclick="yes()">YES ❤️</button>
+<button id="noBtn" onmouseover="moveNo()">NO 🙈</button>
+
+
+<script>
+function yes() {
+    alert("Yayayayayayyyyayaayayyyy! I love you so muchhhhh ❤️");
+    const hug = document.createElement("div");
+    hug.className = "hug-container";
+    hug.innerHTML = `
+        <div class="left-teddy">🧸</div>
+        <div class="right-teddy">🧸</div>
+        <div class="kiss">💋</div>
+    `;
+
+    document.body.appendChild(hug);    for (let i = 0; i < 30; i++) {
+        const heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = Math.random() * 100 + "vh";
+        heart.style.fontSize = "24px";
+        document.body.appendChild(heart);
+
+        setTimeout(showLetter, 2500);
+
+    }
+
+}
+function showLetter() {
+    const letter = document.createElement("div");
+
+    letter.style.position = "fixed";
+    letter.style.top = "50%";
+    letter.style.left = "50%";
+    letter.style.transform = "translate(-50%, -50%)";
+    letter.style.background = "white";
+    letter.style.color = "#ff4d6d";
+    letter.style.padding = "25px";
+    letter.style.borderRadius = "15px";
+    letter.style.width = "300px";
+    letter.style.textAlign = "center";
+    letter.style.boxShadow = "0 0 20px rgba(0,0,0,0.3)";
+    letter.style.zIndex = "10";
+
+    letter.innerHTML = `
+        <h2>💌 A Letter For You</h2>
+        <p>
+        Thank you for loving me everyday.
+        Everyday feels like a special day with you and you make every da(te)y count.
+        Grateful would be such a small word for what I feel for you, you are such a blessing in my life.
+        Thank you coming in my life and being the best thing ever happened to me. ❤️
+        </p>
+        <button onclick="showFinal()">Continue </button>
+    `;
+
+    letter.id = "loveLetter";
+    document.body.appendChild(letter);
+}
+function showFinal() {
+    const letter = document.getElementById("loveLetter");
+    if(letter) letter.remove();
+
+    const finalScreen = document.createElement("div");
+
+    finalScreen.style.position = "fixed";
+    finalScreen.style.top = "0";
+    finalScreen.style.left = "0";
+    finalScreen.style.width = "100%";
+    finalScreen.style.height = "100%";
+    finalScreen.style.background = "#ff6f91";
+    finalScreen.style.color = "white";
+    finalScreen.style.display = "flex";
+    finalScreen.style.justifyContent = "center";
+    finalScreen.style.alignItems = "center";
+    finalScreen.style.flexDirection = "column";
+    finalScreen.style.textAlign = "center";
+    finalScreen.style.zIndex = "1000";
+
+
+    finalScreen.innerHTML = `
+        <h1>Happy Propose Day Jaanu❤️</h1>
+        <p>
+        From 15 December till forever ♾️<br><br>
+        I love you more every day.<br><br>
+        Forever yours,<br>
+        Jaanu 💌
+        </p>
+    `;
+
+    document.body.appendChild(finalScreen);
+}
+
+
+function moveNo() {
+    const btn = document.getElementById("noBtn");
+    btn.style.position = "absolute";
+    btn.style.left = Math.random() * 80 + "vw";
+    btn.style.top = Math.random() * 80 + "vh";
+}
+</script>
+
+</body>
+<div class="teddy">🧸</div>
+
+</html>
